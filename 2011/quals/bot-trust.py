@@ -29,13 +29,14 @@ class Bot:
 					self.position -= distance
 
 	#If this bot is next to press, move to its button.
-	def move_if_next(self):
+	def move_if_next(self, sequence):
 		if len(self.commands) != 0:
-			distance = abs(self.position - self.commands[0][1])
-			self.position = self.commands[0][1]
-			return distance
-		else:
-			return 0
+			if (sequence == self.commands[0][0]):
+				distance = abs(self.position - self.commands[0][1])
+				self.position = self.commands[0][1]
+				return distance
+		
+		return 0
 	
 	#If the bot is at its next button and it is the next in the program sequnce, press it and return True
 	#otherwise, return False
@@ -109,23 +110,24 @@ class TestChamber:
 		while self.sequence < self.test_length:
 			d0 = Orange.shout_distance()
 			d1 = Blue.shout_distance()
-			print(self.sequence, self.time_elapsed, Orange.position, d0, Blue.position, d1)
+			#print('seq:',self.sequence)
+			#print(' elap:',self.time_elapsed, 'o pos:',Orange.position, 'o dis:',d0, 'blue pos',Blue.position, 'blue dis:',d1)
 			if (d0 != 0 and d1 != 0):
 				#neither bot is at their next button, move
 				if (d0 < d1):
 					Orange.move(d0)
 					Blue.move(d0)
-					self.time_elapsed = d0
+					self.time_elapsed += d0
 				else:
 					Orange.move(d1)
 					Blue.move(d1)
-					self.time_elapsed = d1
+					self.time_elapsed += d1
 			else:
 				#one bot is already at its button, ask the other to move
 				if (d0 == 0):
-					self.time_elapsed += Blue.move_if_next()
+					self.time_elapsed += Blue.move_if_next(self.sequence)
 				else:
-					self.time_elapsed += Orange.move_if_next()
+					self.time_elapsed += Orange.move_if_next(self.sequence)
 
 			#at least one bot is at their button, don't move
 			#ask him to press it
@@ -157,7 +159,7 @@ class TestChamber:
  # for the robots in the format:
  # {button number} {robot color}
 def accept_input():
-	str = input('--> ')
+	str = input()
 
 	try:
 		num_inputs = int(str)
