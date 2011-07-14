@@ -155,9 +155,7 @@ class TestChamber:
 		print('Case #%d:' % self.test_number, self.time_elapsed)
 
 ##
- # Accepts program input as a number of commands to follow, folled by strings of instructions
- # for the robots in the format:
- # {button number} {robot color}
+ # Accepts program input as a number of commands to follow, follewed by strings of input
 def accept_input():
 	str = input()
 
