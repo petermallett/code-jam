@@ -23,23 +23,24 @@ def evoke(magic):
 
 	evoke = magic[2]
 	spell = ''
-
+	
 	for element in evoke:
-		if len(spell) == 0:
-			spell += element
-		else:
+		if len(spell) != 0:
 			#look for combo
 			combo_result = ''
 			if spell[-1] in base_letters:
 				combo_result = find_combo(spell[-1], element, combos)
 				if combo_result != '':
-					spell[-1] = combo_result
+					spell = spell[0:-1] + combo_result
+					continue
 			#check for opposition if combo was not created
 			opp_result = False
 			if combo_result == '':
 				opp_result = find_opp(spell, element, oppose)
 				if (opp_result):
 					spell = ''
+					continue
+		spell += element
 	return spell
 
 def parse_input(input_string):
@@ -80,5 +81,11 @@ case_number = 1
 for input_string in inputs:
 	magic = parse_input(input_string)
 	spell = evoke(magic)
-	print('Case #%d:' % case_number, spell)
+	output = 'Case #%d: [' % case_number
+	for i, element in enumerate(spell):
+		output += element
+		if i + 1 < len(spell):
+			output += ', '
+	output += ']'
+	print(output)
 	case_number += 1
