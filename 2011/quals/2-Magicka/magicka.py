@@ -1,4 +1,8 @@
-﻿def find_opp(spell, b, oppose):
+﻿import sys
+sys.path.append('../../')
+import code_jam_common
+
+def find_opp(spell, b, oppose):
 	for o in oppose:
 		for e in spell:
 			if (e == o[0] and b == o[1]) or (e == o[1] and b == o[0]):
@@ -58,25 +62,9 @@ def parse_input(input_string):
 	
 	return [combo, oppose, evoke]
 
-##
- # Accepts program input as a number of commands to follow, follewed by strings of input
-def accept_input():
-	str = input()
-
-	try:
-		num_inputs = int(str)
-	except ValueError:
-		exit('First input must be the number of items to follow.')
-
-	inputs = []
-	while (num_inputs):
-		num_inputs -= 1
-		inputs.append(input().strip())
-
-	return inputs
-
 ###
-inputs = accept_input()
+inputs = code_jam_common.accept_input()
+
 case_number = 1
 for input_string in inputs:
 	magic = parse_input(input_string)

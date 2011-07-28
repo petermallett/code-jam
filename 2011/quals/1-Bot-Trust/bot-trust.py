@@ -1,3 +1,7 @@
+import sys
+sys.path.append('../../')
+import code_jam_common
+
 class Bot:
 	"""A robot class which can press buttons, stand at buttons and move to other buttons"""
 
@@ -154,25 +158,8 @@ class TestChamber:
 	def print_result(self):
 		print('Case #%d:' % self.test_number, self.time_elapsed)
 
-##
- # Accepts program input as a number of commands to follow, follewed by strings of input
-def accept_input():
-	str = input()
-
-	try:
-		num_inputs = int(str)
-	except ValueError:
-		exit('First input must be the number of items to follow.')
-
-	inputs = []
-	while (num_inputs):
-		num_inputs -= 1
-		inputs.append(input().strip())
-
-	return inputs
-
 ###
-inputs = accept_input()
+inputs = code_jam_common.accept_input()
 test_cases = []
 test_number = 1
 for input_string in inputs:
