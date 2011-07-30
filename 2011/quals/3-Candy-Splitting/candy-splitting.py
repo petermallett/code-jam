@@ -1,6 +1,6 @@
 import sys
 sys.path.append('../../')
-import code_jam_common
+import codejam
 
 def split_candy(input_string):
 	weights = [int(n) for n in input_string.split(' ')]
@@ -17,7 +17,7 @@ def split_candy(input_string):
 		return False
 
 ###
-inputs = code_jam_common.accept_input(2)
+inputs = codejam.accept_input(2)
 case_number = 1
 for i, input_string in enumerate(inputs):
 	# each odd input line is the list of weight values

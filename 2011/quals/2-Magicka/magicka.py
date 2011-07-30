@@ -1,6 +1,6 @@
 ﻿import sys
 sys.path.append('../../')
-import code_jam_common
+import codejam
 
 def find_opp(spell, b, oppose):
 	for o in oppose:
@@ -63,7 +63,7 @@ def parse_input(input_string):
 	return [combo, oppose, evoke]
 
 ###
-inputs = code_jam_common.accept_input()
+inputs = codejam.accept_input()
 
 case_number = 1
 for input_string in inputs:

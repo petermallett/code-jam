@@ -1,3 +1,5 @@
+# Common functions for code jam problems.
+
 ##
  # Accepts program input as a number of commands to follow, follewed by strings of input
 def accept_input(lines_per = 1):

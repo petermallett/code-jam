@@ -1,6 +1,6 @@
 import sys
 sys.path.append('../../')
-import code_jam_common
+import codejam
 
 class Bot:
 	"""A robot class which can press buttons, stand at buttons and move to other buttons"""
@@ -159,7 +159,7 @@ class TestChamber:
 		print('Case #%d:' % self.test_number, self.time_elapsed)
 
 ###
-inputs = code_jam_common.accept_input()
+inputs = codejam.accept_input()
 test_cases = []
 test_number = 1
 for input_string in inputs:
