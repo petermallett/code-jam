@@ -9,8 +9,17 @@ import codejam
 # g - percentage of games won all time
 # Then calculates the possibility of these percentages
 def test_stats(input_string):
-	n, d, g = input_string.split(' ')
-	pass
+	possible = True
+	n, d, g = [int(x) for x in input_string.split(' ')]
+	if (g == 100 and d != 100):
+		possible = False
+	elif (g == 0 and d != 0):
+		possible = False
+	else:
+		#dunno
+		pass
+	return possible
+		
 
 ###
 inputs = codejam.accept_input()
