@@ -6,20 +6,20 @@ import codejam
 # Splits input string into:
 # n - max number of games played today
 # d - percentage of games won this day
-# g - percentage of games won all time
-# Then calculates the possibility of these percentages
+# g - percentage of games jon all time
+# Then calculates the possibility of these percentages.
 def test_stats(input_string):
-	possible = True
+	possible = False
 	n, d, g = [int(x) for x in input_string.split(' ')]
-	if (g == 100 and d != 100):
+	if (g == 100 and d != 100) or (g == 0 and d != 0):
 		possible = False
-	elif (g == 0 and d != 0):
-		possible = False
+	elif (g == d == 0) or (g == d == 100):
+		possible = True
 	else:
-		#dunno
-		pass
+		for t in range(1, n + 1):
+			if (t * d) % 100 == 0:
+				possible = True	
 	return possible
-		
 
 ###
 inputs = codejam.accept_input()
